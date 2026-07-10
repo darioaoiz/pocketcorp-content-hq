@@ -17,8 +17,12 @@ export async function proxy(request: NextRequest) {
   return NextResponse.next();
 }
 
+// El manifest, el service worker y los iconos deben quedar accesibles sin
+// sesion: Chrome evalua la instalabilidad de la PWA (y el propio SW) antes
+// de que haya login, y un redirect a /login en esas requests rompe el
+// criterio de instalacion ("Agregar app" nunca aparece, solo "acceso directo").
 export const config = {
   matcher: [
-    "/((?!login|api/auth/login|_next/static|_next/image|favicon.ico).*)",
+    "/((?!login|api/auth/login|_next/static|_next/image|favicon.ico|manifest.webmanifest|sw.js|icon.png|icon-192.png|icon-512.png|icon-maskable.png|logo-pocketcorp.png).*)",
   ],
 };
