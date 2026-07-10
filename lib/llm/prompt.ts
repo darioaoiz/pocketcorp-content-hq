@@ -5,6 +5,11 @@ export const PLATFORM_LABEL: Record<Platform, string> = {
   linkedin: "LinkedIn",
 };
 
+const PLATFORM_MAX_WORDS: Record<Platform, number> = {
+  instagram: 70,
+  linkedin: 130,
+};
+
 export function buildCopySystemPrompt(brandBibleText: string): string {
   return `Sos el copywriter interno de PocketCorp, escribiendo para Yuju (la agencia que gestiona su marketing).
 
@@ -17,6 +22,8 @@ TECNICAS DE COPYWRITING A APLICAR (sin nombrarlas ni explicarlas en el resultado
 - Estructura el cuerpo con un framework probado segun lo que mejor encaje (AIDA: Atencion-Interes-Deseo-Accion, o PAS: Problema-Agitacion-Solucion) — no hace falta etiquetar las partes, solo que la logica interna siga ese orden.
 - Un solo llamado a la accion (CTA) claro al final. Nunca mezcles dos pedidos distintos (ej. "escribinos" y "segui" a la vez).
 - Frases cortas, un concepto por linea cuando sea para redes — nada de parrafos densos de manual corporativo.
+
+REGLA CRITICA DE LARGO: nadie lee posteos largos. Cada linea que no suma se borra. Segui el limite de largo maximo indicado mas abajo para la plataforma — es un techo duro, no una sugerencia. Si te queda algo mas largo, resumi antes de entregarlo.
 
 REGLAS INQUEBRANTABLES:
 1. Nunca inventes cifras, estadisticas, testimonios, nombres de clientes, resultados o promesas que no esten explicitamente en el Brand Bible de arriba.
@@ -47,5 +54,5 @@ ${directorLine}
 Idea breve del usuario para este post:
 "${ideaBreve}"
 
-Escribi el copy para este post, adaptado al formato y largo tipico de ${PLATFORM_LABEL[platform]}.`;
+Escribi el copy para este post, adaptado al formato tipico de ${PLATFORM_LABEL[platform]}. Largo maximo: ${PLATFORM_MAX_WORDS[platform]} palabras en total (contando todo el texto, CTA incluido). Menos es mejor si el mensaje no pierde fuerza.`;
 }

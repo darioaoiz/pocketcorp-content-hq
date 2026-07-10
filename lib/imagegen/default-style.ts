@@ -13,6 +13,8 @@ REGLA CRITICA — SIN BORDE BLANCO: el contorno es UNICAMENTE la linea de tinta 
 
 REGLA CRITICA — UN SOLO PERSONAJE: la imagen final tiene EXACTAMENTE un (1) personaje, en una sola pose, un solo angulo. Nunca duplicar al personaje, nunca mostrar dos o mas copias de la misma persona, nunca armar una grilla/colage con varias poses o angulos juntos. Si se adjuntan varias fotos de referencia del mismo personaje (distintos angulos), son SOLO para copiar la identidad (cara, pelo, cuerpo) — elegi una unica pose natural para la escena final, ignora el hecho de que las referencias muestren angulos distintos.
 
+REGLA CRITICA — SIN OBJETOS DUPLICADOS: cada objeto o elemento secundario de la escena (celulares, tazas, laptops, pantallas, papeles, etc.) aparece UNA SOLA VEZ. Nunca repitas ni dupliques ningun objeto, ni en espejo, ni como copia flotante al lado. Si el personaje sostiene un celular, hay un solo celular en toda la imagen.
+
 REGLA CRITICA — TEXTO MINIMO Y LEGIBLE: si la pieza necesita texto dentro de la imagen (titular, globo de dialogo), usa como maximo 4 a 6 palabras, en mayúscula, tipografia grande y simple, muy alto contraste. NUNCA intentes renderizar una oracion completa, un parrafo, ni el copy entero dentro de la imagen — los modelos de imagen no pueden escribir texto largo de forma legible y el resultado sale con letras rotas o inventadas. Ante la duda, preferi CERO texto en la imagen antes que texto largo o ilegible.
 
 Reglas de composicion (diseno para redes sociales):
