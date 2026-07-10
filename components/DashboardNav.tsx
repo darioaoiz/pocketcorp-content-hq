@@ -47,7 +47,7 @@ export function DashboardNav({ email }: { email: string }) {
       {/* Desktop sidebar */}
       <aside className="hidden md:flex md:w-60 md:shrink-0 md:flex-col md:border-r-2 md:border-ink md:bg-paper md:p-5">
         <Link href="/calendar" className="mb-8 block">
-          <img src="/logo-pocketcorp.png" alt="PocketCorp" className="mb-2 h-7 w-auto" />
+          <img src="/logo-pocketcorp.png" alt="PocketCorp" className="mb-3 h-14 w-auto" />
           <h1 className="font-comic text-xl uppercase leading-none text-ink">Content HQ</h1>
           <p className="mt-1 font-label text-[10px] uppercase tracking-widest text-ink-muted">by Yuju</p>
         </Link>
@@ -65,7 +65,7 @@ export function DashboardNav({ email }: { email: string }) {
       {/* Mobile top bar */}
       <header className="flex items-center justify-between border-b-2 border-ink bg-paper px-4 py-3 md:hidden">
         <Link href="/calendar" className="flex items-center gap-2">
-          <img src="/logo-pocketcorp.png" alt="PocketCorp" className="h-5 w-auto" />
+          <img src="/logo-pocketcorp.png" alt="PocketCorp" className="h-9 w-auto" />
           <h1 className="font-comic text-lg uppercase leading-none text-ink">Content HQ</h1>
         </Link>
         <button
