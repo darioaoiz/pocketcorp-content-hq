@@ -1,26 +1,66 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Canvas — corregido por el usuario: claro, no oscuro */
+  --executive-cream: #faf9f5;
+  --paper: #ffffff;
+  --ink: #191919;
+  --ink-muted: #5c584f;
+  --pop-orange: #ff4f12;
+
+  /* Estados de content_items */
+  --state-borrador: #d9d6cc;
+  --state-copy: #00e5ff;
+  --state-creativo: #ffc72c;
+  --state-pendiente: #ff4f12;
+  --state-aprobado: #00ff66;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-cream: var(--executive-cream);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-pop-orange: var(--pop-orange);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-state-borrador: var(--state-borrador);
+  --color-state-copy: var(--state-copy);
+  --color-state-creativo: var(--state-creativo);
+  --color-state-pendiente: var(--state-pendiente);
+  --color-state-aprobado: var(--state-aprobado);
+
+  --font-display: var(--font-archivo-raw);
+  --font-comic: var(--font-anton-raw);
+  --font-body: var(--font-hanken-raw);
+  --font-label: var(--font-space-mono-raw);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--executive-cream);
+  color: var(--ink);
+  font-family: var(--font-hanken-raw), sans-serif;
+}
+
+@layer utilities {
+  .border-brutal {
+    border: 2px solid var(--ink);
+  }
+  .border-brutal-thick {
+    border: 3px solid var(--ink);
+  }
+  .shadow-brutal {
+    box-shadow: 4px 4px 0 0 var(--ink);
+  }
+  .shadow-brutal-sm {
+    box-shadow: 2px 2px 0 0 var(--ink);
+  }
+  .shadow-brutal-lg {
+    box-shadow: 6px 6px 0 0 var(--ink);
+  }
+  .shadow-brutal-director {
+    box-shadow: 4px 4px 0 0 var(--director, var(--ink));
+  }
+  .border-brutal-director {
+    border: 3px solid var(--director, var(--ink));
+  }
 }
