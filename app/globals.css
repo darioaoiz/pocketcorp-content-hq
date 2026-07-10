@@ -63,4 +63,16 @@ body {
   .border-brutal-director {
     border: 3px solid var(--director, var(--ink));
   }
+
+  /* Esquinas redondeadas de PocketCorp, combinadas con el borde/sombra dura
+     neo-brutalista (nunca esquinas rectas, nunca sombra difuminada). */
+  .rounded-brutal {
+    border-radius: 1.5rem;
+  }
+  .rounded-brutal-sm {
+    border-radius: 0.85rem;
+  }
+  .rounded-brutal-pill {
+    border-radius: 9999px;
+  }
 }

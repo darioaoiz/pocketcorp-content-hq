@@ -43,7 +43,7 @@ export function NewContentForm({ directors, pillarSuggestions }: { directors: Di
           {directors.map((d) => (
             <label
               key={d.id}
-              className="flex cursor-pointer items-center gap-1.5 border-brutal bg-paper px-2.5 py-1.5 font-label text-[11px] uppercase has-checked:bg-cream"
+              className="flex cursor-pointer items-center gap-1.5 rounded-brutal-pill border-brutal bg-paper px-3 py-1.5 font-label text-[11px] uppercase has-checked:bg-cream"
               style={{ "--director": d.color_hex } as React.CSSProperties}
             >
               <input type="checkbox" name="director_ids" value={d.id} className="accent-[var(--director)]" />
@@ -59,7 +59,7 @@ export function NewContentForm({ directors, pillarSuggestions }: { directors: Di
       </div>
 
       {state.error && (
-        <p className="border-brutal bg-[#FF2E93] px-3 py-2 font-label text-xs uppercase text-white">{state.error}</p>
+        <p className="rounded-brutal-sm border-brutal bg-[#FF2E93] px-3 py-2 font-label text-xs uppercase text-white">{state.error}</p>
       )}
 
       <Button type="submit" disabled={pending} className="self-start">

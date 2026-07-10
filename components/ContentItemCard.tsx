@@ -19,7 +19,7 @@ export function ContentItemCard({
   return (
     <Link
       href={`/content/${item.id}`}
-      className="block border-brutal-director shadow-brutal-director bg-paper p-4 transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-brutal-sm"
+      className="block rounded-brutal border-brutal-director shadow-brutal-director bg-paper p-4 transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-brutal-sm"
       style={{ "--director": accentDirector?.color_hex ?? "var(--ink)" } as React.CSSProperties}
     >
       <div className="mb-2 flex items-start justify-between gap-2">
@@ -33,7 +33,7 @@ export function ContentItemCard({
       {directors.length > 0 && (
         <div className="mt-3 flex flex-wrap gap-1.5">
           {directors.map((d) => (
-            <DirectorTag key={d.id} name={d.name} colorHex={d.color_hex} />
+            <DirectorTag key={d.id} name={d.name} colorHex={d.color_hex} avatarUrl={d.reference_image_urls[0]} />
           ))}
         </div>
       )}

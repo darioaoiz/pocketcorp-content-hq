@@ -25,7 +25,7 @@ function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
             href={link.href}
             onClick={onNavigate}
             className={cn(
-              "border-brutal px-3 py-2.5 font-label text-xs uppercase tracking-wide transition-all",
+              "rounded-brutal-pill border-brutal px-4 py-2.5 font-label text-xs uppercase tracking-wide transition-all",
               active
                 ? "bg-pop-orange text-white shadow-brutal-sm"
                 : "bg-paper text-ink hover:shadow-brutal-sm hover:translate-x-[1px] hover:translate-y-[1px]"
@@ -70,7 +70,7 @@ export function DashboardNav({ email }: { email: string }) {
           type="button"
           onClick={() => setOpen((v) => !v)}
           aria-label="Abrir menu"
-          className="border-brutal bg-paper px-3 py-2 shadow-brutal-sm font-label text-xs uppercase"
+          className="rounded-brutal-pill border-brutal bg-paper px-3 py-2 shadow-brutal-sm font-label text-xs uppercase"
         >
           {open ? "Cerrar" : "Menu"}
         </button>

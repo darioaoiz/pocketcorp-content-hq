@@ -19,7 +19,7 @@ export function Button({ variant = "primary", className, disabled, ...props }: B
     <button
       disabled={disabled}
       className={cn(
-        "inline-flex items-center justify-center gap-2 border-brutal font-label text-xs uppercase tracking-wide px-4 py-2.5 transition-all",
+        "inline-flex items-center justify-center gap-2 rounded-brutal-pill border-brutal font-label text-xs uppercase tracking-wide px-5 py-2.5 transition-all",
         variantClasses[variant],
         disabled
           ? "opacity-40 cursor-not-allowed shadow-none translate-x-0 translate-y-0"

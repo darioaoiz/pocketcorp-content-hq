@@ -28,7 +28,7 @@ export function ContentWorkspace({
   return (
     <div className="flex flex-col gap-6">
       <header
-        className="border-brutal-director shadow-brutal-director bg-paper p-5"
+        className="rounded-brutal border-brutal-director shadow-brutal-director bg-paper p-5"
         style={{ "--director": selectedDirectors[0]?.color_hex ?? "var(--ink)" } as React.CSSProperties}
       >
         <div className="mb-2 flex flex-wrap items-center justify-between gap-3">
@@ -41,7 +41,7 @@ export function ContentWorkspace({
         {selectedDirectors.length > 0 && (
           <div className="mt-3 flex flex-wrap gap-1.5">
             {selectedDirectors.map((d) => (
-              <DirectorTag key={d.id} name={d.name} colorHex={d.color_hex} />
+              <DirectorTag key={d.id} name={d.name} colorHex={d.color_hex} avatarUrl={d.reference_image_urls[0]} />
             ))}
           </div>
         )}
@@ -127,7 +127,7 @@ function CopySection({
           {directors.map((d) => (
             <label
               key={d.id}
-              className="flex cursor-pointer items-center gap-1.5 border-brutal bg-paper px-2.5 py-1.5 font-label text-[11px] uppercase has-checked:bg-cream"
+              className="flex cursor-pointer items-center gap-1.5 rounded-brutal-pill border-brutal bg-paper px-3 py-1.5 font-label text-[11px] uppercase has-checked:bg-cream"
               style={{ "--director": d.color_hex } as React.CSSProperties}
             >
               <input
@@ -149,7 +149,7 @@ function CopySection({
       </div>
 
       {error && (
-        <p className="mt-3 border-brutal bg-[#FF2E93] px-3 py-2 font-label text-xs uppercase text-white">{error}</p>
+        <p className="mt-3 rounded-brutal-sm border-brutal bg-[#FF2E93] px-3 py-2 font-label text-xs uppercase text-white">{error}</p>
       )}
 
       <Button className="mt-4" disabled={locked || loading} onClick={handleGenerate}>
@@ -157,7 +157,7 @@ function CopySection({
       </Button>
 
       {item.copy && (
-        <div className="mt-4 whitespace-pre-wrap border-brutal bg-cream p-4 font-body text-sm text-ink">
+        <div className="mt-4 whitespace-pre-wrap rounded-brutal-sm border-brutal bg-cream p-4 font-body text-sm text-ink">
           {item.copy}
         </div>
       )}
@@ -204,7 +204,7 @@ function CreativeSection({
         <img
           src={item.image_url}
           alt={`Creativo para ${item.pilar}`}
-          className="mb-4 w-full max-w-sm border-brutal shadow-brutal"
+          className="mb-4 w-full max-w-sm rounded-brutal border-brutal shadow-brutal"
         />
       )}
 
@@ -220,11 +220,11 @@ function CreativeSection({
       </div>
 
       {error && (
-        <p className="mb-3 border-brutal bg-[#FF2E93] px-3 py-2 font-label text-xs uppercase text-white">{error}</p>
+        <p className="mb-3 rounded-brutal-sm border-brutal bg-[#FF2E93] px-3 py-2 font-label text-xs uppercase text-white">{error}</p>
       )}
 
       {loading && (
-        <p className="mb-3 border-brutal bg-state-creativo px-3 py-2 font-label text-xs uppercase text-ink">
+        <p className="mb-3 rounded-brutal-sm border-brutal bg-state-creativo px-3 py-2 font-label text-xs uppercase text-ink">
           Generando la imagen... (puede tardar unos segundos)
         </p>
       )}
@@ -279,7 +279,7 @@ function ApprovalSection({
       <h2 className="mb-4 font-display text-lg font-extrabold uppercase text-ink">3. Aprobacion</h2>
 
       {error && (
-        <p className="mb-3 border-brutal bg-[#FF2E93] px-3 py-2 font-label text-xs uppercase text-white">{error}</p>
+        <p className="mb-3 rounded-brutal-sm border-brutal bg-[#FF2E93] px-3 py-2 font-label text-xs uppercase text-white">{error}</p>
       )}
 
       {item.estado === "creativo_generado" && (

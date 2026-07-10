@@ -2,7 +2,7 @@ import type { InputHTMLAttributes, LabelHTMLAttributes, SelectHTMLAttributes, Te
 import { cn } from "@/lib/utils/cn";
 
 const fieldBase =
-  "w-full border-brutal bg-paper px-3 py-2.5 font-body text-ink placeholder:text-ink-muted focus:outline-none focus:shadow-brutal-sm focus:translate-x-[1px] focus:translate-y-[1px] transition-all disabled:opacity-50";
+  "w-full rounded-brutal-sm border-brutal bg-paper px-3 py-2.5 font-body text-ink placeholder:text-ink-muted focus:outline-none focus:shadow-brutal-sm focus:translate-x-[1px] focus:translate-y-[1px] transition-all disabled:opacity-50";
 
 export function Label({ className, ...props }: LabelHTMLAttributes<HTMLLabelElement>) {
   return (

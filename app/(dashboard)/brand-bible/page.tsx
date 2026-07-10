@@ -34,13 +34,13 @@ export default async function BrandBiblePage() {
             {versions.map((v) => (
               <li
                 key={v.id}
-                className="flex items-center justify-between border-brutal bg-cream px-3 py-2 font-body text-sm"
+                className="flex items-center justify-between rounded-brutal-sm border-brutal bg-cream px-3 py-2 font-body text-sm"
               >
                 <span>
                   Version #{v.version_number} — {new Date(v.created_at).toLocaleString("es")}
                 </span>
                 {v.is_current && (
-                  <span className="border-brutal bg-state-aprobado px-2 py-0.5 font-label text-[10px] uppercase">
+                  <span className="rounded-brutal-pill border-brutal bg-state-aprobado px-2 py-0.5 font-label text-[10px] uppercase">
                     Vigente
                   </span>
                 )}

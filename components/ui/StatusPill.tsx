@@ -14,7 +14,7 @@ export function StatusPill({ estado, className }: { estado: ContentEstado; class
   return (
     <span
       className={cn(
-        "inline-flex items-center border-brutal-thick px-2.5 py-1 font-label text-[11px] uppercase tracking-wide text-ink",
+        "inline-flex items-center rounded-brutal-pill border-brutal-thick px-3 py-1 font-label text-[11px] uppercase tracking-wide text-ink",
         className
       )}
       style={{ backgroundColor: meta.color }}

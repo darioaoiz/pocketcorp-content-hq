@@ -65,10 +65,10 @@ export function BrandBibleForm({ current }: { current: BrandBibleVersionRow | nu
       </div>
 
       {state.error && (
-        <p className="border-brutal bg-[#FF2E93] px-3 py-2 font-label text-xs uppercase text-white">{state.error}</p>
+        <p className="rounded-brutal-sm border-brutal bg-[#FF2E93] px-3 py-2 font-label text-xs uppercase text-white">{state.error}</p>
       )}
       {state.success && (
-        <p className="border-brutal bg-state-aprobado px-3 py-2 font-label text-xs uppercase text-ink">
+        <p className="rounded-brutal-sm border-brutal bg-state-aprobado px-3 py-2 font-label text-xs uppercase text-ink">
           Guardado como nueva version.
         </p>
       )}

@@ -15,16 +15,27 @@ export function DirectorCard({ director }: { director: DirectorRow }) {
 
   return (
     <div
-      className="border-brutal-director shadow-brutal-director bg-paper p-4"
+      className="rounded-brutal border-brutal-director shadow-brutal-director bg-paper p-5"
       style={{ "--director": director.color_hex } as React.CSSProperties}
     >
-      <div className="mb-3 flex items-center gap-3">
+      <div className="mb-4 flex flex-col items-center text-center">
         {slots[0] ? (
-          <img src={slots[0]} alt={director.name} className="h-8 w-8 shrink-0 border-brutal object-cover" />
+          <img
+            src={slots[0]}
+            alt={director.name}
+            className="mb-3 h-24 w-24 rounded-full border-[3px] object-cover"
+            style={{ borderColor: director.color_hex }}
+          />
         ) : (
-          <span className="h-8 w-8 shrink-0 border-brutal" style={{ backgroundColor: director.color_hex }} aria-hidden />
+          <span
+            className="mb-3 flex h-24 w-24 items-center justify-center rounded-full border-[3px] font-comic text-3xl text-ink"
+            style={{ borderColor: director.color_hex, backgroundColor: `${director.color_hex}33` }}
+          >
+            {director.name.slice(0, 1)}
+          </span>
         )}
         <h3 className="font-display text-xl font-extrabold uppercase text-ink">{director.name}</h3>
+        {director.role && <p className="font-label text-[11px] uppercase text-ink-muted">{director.role}</p>}
       </div>
 
       <form action={formAction} className="flex flex-col gap-3">
@@ -33,9 +44,24 @@ export function DirectorCard({ director }: { director: DirectorRow }) {
           <Label htmlFor={`role-${director.id}`}>Rol</Label>
           <Input id={`role-${director.id}`} name="role" defaultValue={director.role ?? ""} placeholder="Por definir" />
         </div>
-        <div>
-          <Label htmlFor={`color-${director.id}`}>Color oficial (hex)</Label>
-          <Input id={`color-${director.id}`} name="color_hex" defaultValue={director.color_hex} />
+
+        <div className="flex items-center gap-2">
+          <input
+            type="color"
+            aria-label="Color oficial"
+            defaultValue={director.color_hex}
+            className="h-9 w-9 shrink-0 cursor-pointer rounded-full border-brutal p-0"
+            onChange={(e) => {
+              const hexInput = document.getElementById(`color-${director.id}`) as HTMLInputElement | null;
+              if (hexInput) hexInput.value = e.target.value.toUpperCase();
+            }}
+          />
+          <Input
+            id={`color-${director.id}`}
+            name="color_hex"
+            defaultValue={director.color_hex}
+            className="font-label text-xs"
+          />
         </div>
 
         <div>
@@ -48,12 +74,12 @@ export function DirectorCard({ director }: { director: DirectorRow }) {
         </div>
 
         {state.error && (
-          <p className="border-brutal bg-[#FF2E93] px-2 py-1.5 font-label text-[11px] uppercase text-white">
+          <p className="rounded-brutal-sm border-brutal bg-[#FF2E93] px-2 py-1.5 font-label text-[11px] uppercase text-white">
             {state.error}
           </p>
         )}
         {state.success && (
-          <p className="border-brutal bg-state-aprobado px-2 py-1.5 font-label text-[11px] uppercase text-ink">
+          <p className="rounded-brutal-sm border-brutal bg-state-aprobado px-2 py-1.5 font-label text-[11px] uppercase text-ink">
             Guardado.
           </p>
         )}
@@ -71,11 +97,11 @@ function ReferenceSlot({ slot, url, directorId }: { slot: number; url: string | 
   const inputId = `ref-${directorId}-${slot}`;
 
   return (
-    <div className="border-brutal bg-cream p-1.5">
+    <div className="rounded-brutal-sm border-brutal bg-cream p-1.5">
       <input type="hidden" name={`existing_url_${slot}`} value={remove ? "" : (url ?? "")} />
       {url && !remove ? (
         <div className="mb-1 flex items-center justify-between gap-1">
-          <img src={url} alt={`Referencia ${slot + 1}`} className="h-14 w-14 border-brutal object-cover" />
+          <img src={url} alt={`Referencia ${slot + 1}`} className="h-14 w-14 rounded-brutal-sm border-brutal object-cover" />
           <label className="flex items-center gap-1 font-label text-[9px] uppercase text-ink-muted">
             <input
               type="checkbox"
