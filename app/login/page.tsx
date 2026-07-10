@@ -4,9 +4,11 @@ export default function LoginPage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-cream px-4">
       <div className="w-full max-w-sm">
-        <div className="mb-8 text-center">
-          <p className="font-label text-xs uppercase tracking-widest text-pop-orange mb-2">Yuju × PocketCorp</p>
+        <div className="mb-8 flex flex-col items-center text-center">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo-pocketcorp.png" alt="PocketCorp" className="mb-3 h-10 w-auto" />
           <h1 className="font-comic text-4xl uppercase text-ink">Content HQ</h1>
+          <p className="mt-1 font-label text-xs uppercase tracking-widest text-ink-muted">by Yuju</p>
         </div>
         <div className="rounded-brutal border-brutal bg-paper shadow-brutal-lg p-6">
           <LoginForm />
