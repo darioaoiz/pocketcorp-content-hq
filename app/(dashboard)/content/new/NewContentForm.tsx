@@ -4,6 +4,7 @@ import { useActionState } from "react";
 import { createContentItemAction, type CreateContentItemState } from "./actions";
 import { Button } from "@/components/ui/Button";
 import { Input, Label, Select, Textarea } from "@/components/ui/fields";
+import { PillarPicker } from "@/components/ui/PillarPicker";
 import type { DirectorRow } from "@/types/database";
 
 const initialState: CreateContentItemState = { error: null };
@@ -23,13 +24,8 @@ export function NewContentForm({ directors, pillarSuggestions }: { directors: Di
       </div>
 
       <div>
-        <Label htmlFor="pilar">Pilar de contenido</Label>
-        <Input id="pilar" name="pilar" list="pillar-suggestions" required placeholder="Ej: Educacion financiera" />
-        <datalist id="pillar-suggestions">
-          {pillarSuggestions.map((p) => (
-            <option key={p} value={p} />
-          ))}
-        </datalist>
+        <Label>Pilar de contenido</Label>
+        <PillarPicker pillars={pillarSuggestions} name="pilar" />
       </div>
 
       <div>

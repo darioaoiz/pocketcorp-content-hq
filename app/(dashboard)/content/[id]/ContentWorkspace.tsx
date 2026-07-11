@@ -4,9 +4,11 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
-import { Input, Label, Select, Textarea } from "@/components/ui/fields";
+import { Label, Select, Textarea } from "@/components/ui/fields";
 import { StatusPill } from "@/components/ui/StatusPill";
 import { DirectorTag } from "@/components/ui/DirectorTag";
+import { PillarPicker } from "@/components/ui/PillarPicker";
+import { AngleSuggestions } from "@/components/AngleSuggestions";
 import { approveAction, sendForApprovalAction, updateNotesAction } from "./actions";
 import { IMAGE_FORMATS, DEFAULT_IMAGE_FORMAT_ID } from "@/lib/imagegen/formats";
 import type { ContentItemRow, DirectorRow, Platform } from "@/types/database";
@@ -16,9 +18,11 @@ const PLATFORM_LABEL: Record<Platform, string> = { instagram: "Instagram", linke
 export function ContentWorkspace({
   initialItem,
   directors,
+  pillarSuggestions,
 }: {
   initialItem: ContentItemRow;
   directors: DirectorRow[];
+  pillarSuggestions: string[];
 }) {
   const router = useRouter();
   const [item, setItem] = useState(initialItem);
@@ -47,7 +51,7 @@ export function ContentWorkspace({
         )}
       </header>
 
-      <CopySection item={item} directors={directors} onUpdated={setItem} />
+      <CopySection item={item} directors={directors} pillarSuggestions={pillarSuggestions} onUpdated={setItem} />
       {item.copy && <CreativeSection item={item} onUpdated={setItem} />}
       {item.estado === "creativo_generado" || item.estado === "pendiente_aprobacion" || item.estado === "aprobado" ? (
         <ApprovalSection item={item} onUpdated={setItem} router={router} />
@@ -60,10 +64,12 @@ export function ContentWorkspace({
 function CopySection({
   item,
   directors,
+  pillarSuggestions,
   onUpdated,
 }: {
   item: ContentItemRow;
   directors: DirectorRow[];
+  pillarSuggestions: string[];
   onUpdated: (item: ContentItemRow) => void;
 }) {
   const [platform, setPlatform] = useState<Platform>(item.platform);
@@ -102,23 +108,22 @@ function CopySection({
     <Card>
       <h2 className="mb-4 font-display text-lg font-extrabold uppercase text-ink">1. Copy</h2>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div>
-          <Label htmlFor="platform">Plataforma</Label>
-          <Select
-            id="platform"
-            value={platform}
-            disabled={locked}
-            onChange={(e) => setPlatform(e.target.value as Platform)}
-          >
-            <option value="instagram">Instagram</option>
-            <option value="linkedin">LinkedIn</option>
-          </Select>
-        </div>
-        <div>
-          <Label htmlFor="pilar">Pilar</Label>
-          <Input id="pilar" value={pilar} disabled={locked} onChange={(e) => setPilar(e.target.value)} />
-        </div>
+      <div>
+        <Label htmlFor="platform">Plataforma</Label>
+        <Select
+          id="platform"
+          value={platform}
+          disabled={locked}
+          onChange={(e) => setPlatform(e.target.value as Platform)}
+        >
+          <option value="instagram">Instagram</option>
+          <option value="linkedin">LinkedIn</option>
+        </Select>
+      </div>
+
+      <div className="mt-4">
+        <Label>Pilar de contenido</Label>
+        <PillarPicker pillars={pillarSuggestions} name="pilar-edit" value={pilar} onChange={setPilar} disabled={locked} />
       </div>
 
       <div className="mt-4">
@@ -143,8 +148,17 @@ function CopySection({
         </div>
       </div>
 
+      <AngleSuggestions
+        contentItemId={item.id}
+        platform={platform}
+        pilar={pilar}
+        directorIds={directorIds}
+        disabled={locked}
+        onSelect={(angle) => setIdeaBreve(`${angle.title} — ${angle.description}`)}
+      />
+
       <div className="mt-4">
-        <Label htmlFor="idea_breve">Idea breve</Label>
+        <Label htmlFor="idea_breve">Tu idea (elegi una sugerencia arriba o escribila vos)</Label>
         <Textarea id="idea_breve" value={ideaBreve} disabled={locked} onChange={(e) => setIdeaBreve(e.target.value)} />
       </div>
 
